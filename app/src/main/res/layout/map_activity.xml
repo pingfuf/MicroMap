@@ -5,14 +5,14 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
        
-    <com.map.core.map.MapView
+    <com.micromap.core.map.MapView
         android:id="@+id/mapview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:longClickable="true"
         />
     
-    <com.map.core.TopLayout
+    <com.micromap.view.TopLayout
         android:id="@+id/mapview_top"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -40,15 +40,6 @@
             />
 
         <ImageButton
-            android:id="@+id/navigation_button"
-            android:layout_width="48dp"
-            android:layout_height="fill_parent"
-            android:scaleType="fitCenter"
-            android:contentDescription="@string/search"
-            android:src="@drawable/navigation"
-            />
-
-        <ImageButton
             android:id="@+id/myplace_button"
             android:layout_width="48dp"
             android:layout_height="fill_parent"
@@ -56,9 +47,9 @@
             android:contentDescription="@string/search"
             android:src="@drawable/myplace"
             />
-    </com.map.core.TopLayout>
+    </com.micromap.view.TopLayout>
     
-    <com.map.core.BottomLayout
+    <com.micromap.view.BottomLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
@@ -74,5 +65,5 @@
             android:layout_gravity="center" 
             />
 
-    </com.map.core.BottomLayout>
+    </com.micromap.view.BottomLayout>
 </RelativeLayout>
