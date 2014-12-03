@@ -5,14 +5,14 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
        
-    <com.map.core.map.MapView
+    <com.micromap.core.map.MapView
         android:id="@+id/mapview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:longClickable="true"
         />
     
-    <com.map.core.TopLayout
+    <LinearLayout
         android:id="@+id/mapview_top"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -56,9 +56,9 @@
             android:contentDescription="@string/search"
             android:src="@drawable/myplace"
             />
-    </com.map.core.TopLayout>
+    </LinearLayout>
     
-    <com.map.core.BottomLayout
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
@@ -74,5 +74,5 @@
             android:layout_gravity="center" 
             />
 
-    </com.map.core.BottomLayout>
+    </LinearLayout>
 </RelativeLayout>
