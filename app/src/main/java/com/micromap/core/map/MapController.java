@@ -83,7 +83,7 @@ public class MapController {
     }
     
     /**
-     *动态的移动地图、实现平滑移动效果
+     * 动态的移动地图、实现平滑移动效果
      */
     public void animateTo(GeoPoint point){
     	

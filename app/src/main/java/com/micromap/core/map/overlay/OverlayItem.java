@@ -20,16 +20,15 @@ import com.micromap.core.map.model.ItemMark;
  */
 public class OverlayItem {
     private GeoPoint point;       //坐标点
-    private String description; //Item的提示信息
-    private String title;       //Item的名称
-    private Bitmap marker;      //Item的标志（建筑标志30*30，道路标志10*10）
-    private int item_type;   //
+    private String description;   //Item的提示信息
+    private String title;         //Item的名称
+    private Bitmap marker;        //Item的标志（建筑标志30*30，道路标志10*10）
+    private int item_type;        //Item的类型
     private Context context;
 
     public boolean isClickable = true;
 
-    public OverlayItem(GeoPoint point, String description,
-                       String title, int item_type, Context context) {
+    public OverlayItem(GeoPoint point, String description, String title, int item_type, Context context) {
         this.point = point;
         this.description = description;
         this.title = title;

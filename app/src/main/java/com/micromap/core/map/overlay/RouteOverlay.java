@@ -12,7 +12,7 @@ import android.util.Log;
 import com.micromap.core.map.model.RoadMark;
 import com.micromap.core.map.GeoPoint;
 import com.micromap.core.map.MapView;
-/*
+/**
  * 道路图层，用来添加道路信息
  */
 public class RouteOverlay extends Overlay {
