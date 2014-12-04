@@ -1,12 +1,12 @@
 package com.micromap.core.utils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.database.sqlite.SQLiteDatabase;
 
 import com.micromap.model.Position;
 import com.micromap.model.dao.PositionDao;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /*
  * 管理所有到终点的道路

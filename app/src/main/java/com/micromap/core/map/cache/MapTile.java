@@ -4,12 +4,12 @@
 
 package com.micromap.core.map.cache;
 
-import java.io.InputStream;
-
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
+import java.io.InputStream;
 
 public class MapTile {
     private Context context;

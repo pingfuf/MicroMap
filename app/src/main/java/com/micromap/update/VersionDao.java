@@ -1,15 +1,5 @@
 package com.micromap.update;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -17,9 +7,19 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.util.Xml;
 
-import com.micromap.model.TBManager;
-import com.micromap.http.HttpDownLoader;
 import com.micromap.core.FileManager;
+import com.micromap.http.HttpDownLoader;
+import com.micromap.model.TBManager;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class VersionDao extends TBManager {
     public static final String FILE_NAME = "Version.xml";

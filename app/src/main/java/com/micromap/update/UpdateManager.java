@@ -1,11 +1,13 @@
 package com.micromap.update;
 
-import java.util.Map;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.micromap.http.HttpDownLoader;
 import com.micromap.model.TBManager;
 import com.micromap.model.dao.BuildingDao;
 import com.micromap.model.dao.BuildingPositionDao;
-import com.micromap.http.HttpDownLoader;
+
+import java.util.Map;
 
 
 /**

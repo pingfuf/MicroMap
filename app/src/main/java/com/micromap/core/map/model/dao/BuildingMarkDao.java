@@ -3,17 +3,17 @@
  */
 package com.micromap.core.map.model.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.micromap.model.Building;
 import com.micromap.core.map.model.BuildingMark;
+import com.micromap.model.Building;
 import com.micromap.model.Position;
 import com.micromap.model.dao.BuildingDao;
 import com.micromap.model.dao.BuildingPositionDao;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class BuildingMarkDao {

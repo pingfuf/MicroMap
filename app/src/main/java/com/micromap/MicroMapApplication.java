@@ -1,15 +1,15 @@
 package com.micromap;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.micromap.core.map.model.ItemMark;
+import com.micromap.core.map.model.RoadMark;
 import com.micromap.model.Position;
 import com.micromap.model.RoadMap;
-import com.micromap.core.map.model.RoadMark;
-import com.micromap.core.map.model.ItemMark;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /*

@@ -9,9 +9,9 @@ import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import butterknife.ButterKnife;
 
 import com.micromap.R;
+
 
 /**
  * Created by pingfu on 14/11/6.
@@ -29,8 +29,6 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         super.setContentView(R.layout.common_title);
         getRootView();
-
-        ButterKnife.inject(this);
     }
 
     /**
@@ -56,6 +54,7 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     public void setContentView(int layoutResId) {
         View view = getLayoutInflater().inflate(layoutResId, null);
         setContentView(view, false);
+
     }
 
     /**

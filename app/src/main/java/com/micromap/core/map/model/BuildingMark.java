@@ -1,9 +1,9 @@
 package com.micromap.core.map.model;
 
-import java.io.Serializable;
-
 import com.micromap.model.Building;
 import com.micromap.model.Position;
+
+import java.io.Serializable;
 
 
 /*

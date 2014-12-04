@@ -1,10 +1,5 @@
 package com.micromap;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -22,15 +17,19 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-import com.micromap.MicroMapApplication;
-import com.micromap.model.DBManager;
-import com.micromap.model.Building;
-import com.micromap.model.Position;
-import com.micromap.core.map.model.RoadMark;
 import com.micromap.core.map.model.ItemMark;
+import com.micromap.core.map.model.RoadMark;
 import com.micromap.core.utils.Dijkstra;
 import com.micromap.core.utils.SearchBuildingUtil;
 import com.micromap.core.utils.SearchRoadUtil;
+import com.micromap.model.Building;
+import com.micromap.model.DBManager;
+import com.micromap.model.Position;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @SuppressLint("UseSparseArrays")

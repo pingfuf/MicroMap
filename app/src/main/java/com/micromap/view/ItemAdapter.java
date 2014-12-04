@@ -1,8 +1,5 @@
 package com.micromap.view;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -15,6 +12,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.micromap.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemAdapter extends BaseAdapter {
 

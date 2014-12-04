@@ -1,9 +1,5 @@
 package com.micromap.core.map.cache;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,6 +7,10 @@ import android.graphics.Matrix;
 import android.util.Log;
 
 import com.micromap.MicroMapApplication.MapConfig;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 
 @SuppressLint("UseSparseArrays")

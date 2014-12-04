@@ -1,8 +1,8 @@
 package com.micromap.core.map.model;
 
-import java.io.Serializable;
-
 import com.micromap.model.Position;
+
+import java.io.Serializable;
 
 /**
  * 建筑类型实体的元数据

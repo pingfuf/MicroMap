@@ -1,23 +1,23 @@
 package com.micromap.model.dao;
 
-import java.io.IOException;
-import java.io.InputStream;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.util.Xml;
 
+import com.micromap.core.FileManager;
 import com.micromap.model.Building;
+import com.micromap.model.BuildingPosition;
+import com.micromap.model.Position;
 import com.micromap.model.SearchRoadUtil;
 import com.micromap.model.TBManager;
-import com.micromap.model.Position;
-import com.micromap.model.BuildingPosition;
-import com.micromap.core.FileManager;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 public class BuildingPositionDao extends TBManager {
 	public static final String TABLE_NAME = "buildingPositions";

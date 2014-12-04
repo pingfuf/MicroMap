@@ -1,7 +1,5 @@
 package com.micromap.core.animation;
 
-import java.io.InputStream;
-
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -10,6 +8,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Build;
+
+import java.io.InputStream;
 
 @SuppressLint("NewApi")
 public class Animation {

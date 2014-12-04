@@ -1,9 +1,9 @@
 package com.micromap.core.map.model;
 
-import java.io.Serializable;
-
 import com.micromap.model.Position;
 import com.micromap.model.Road;
+
+import java.io.Serializable;
 
 /*
  * 道路的抽象数据类型，与数据库的road表结构关系不大

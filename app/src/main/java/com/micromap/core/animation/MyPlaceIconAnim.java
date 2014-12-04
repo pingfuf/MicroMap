@@ -1,7 +1,5 @@
 package com.micromap.core.animation;
 
-import java.util.List;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,11 +12,13 @@ import android.util.Log;
 
 import com.micromap.PathFindingActivity;
 import com.micromap.R;
-import com.micromap.model.Position;
-import com.micromap.core.map.model.RoadMark;
 import com.micromap.core.map.GeoPoint;
 import com.micromap.core.map.MapView;
+import com.micromap.core.map.model.RoadMark;
 import com.micromap.core.utils.SearchRoadUtil;
+import com.micromap.model.Position;
+
+import java.util.List;
 
 public class MyPlaceIconAnim {
     private int screenX;       //icon在手机屏幕上的X轴坐标

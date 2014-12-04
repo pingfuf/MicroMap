@@ -1,10 +1,5 @@
 package com.micromap;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -17,18 +12,22 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.micromap.MicroMapApplication;
-import com.micromap.model.DBManager;
-import com.micromap.model.SearchBuildingUtil;
-import com.micromap.model.SearchFacilityUtil;
 import com.micromap.core.map.model.BuildingMark;
 import com.micromap.core.map.model.FacilityMark;
 import com.micromap.core.map.model.ItemMark;
 import com.micromap.core.map.model.dao.ItemMarkDao;
+import com.micromap.model.DBManager;
+import com.micromap.model.SearchBuildingUtil;
+import com.micromap.model.SearchFacilityUtil;
 import com.micromap.view.BuildingItemAdapter;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @SuppressLint("UseSparseArrays")
-public class BuildingSearchResultActivity  extends Activity{
+public class BuildingSearchResultActivity extends Activity{
 	private ListView listView = null;
     private Button lastPageButton = null;
     private Button nextPageButton = null;

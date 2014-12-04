@@ -18,9 +18,9 @@ import com.micromap.MapActivity;
 import com.micromap.model.DBManager;
 import com.micromap.model.TBFactory;
 import com.micromap.model.TBManager;
-import com.micromap.view.ProgressDialog;
 import com.micromap.update.Version;
 import com.micromap.update.VersionDao;
+import com.micromap.view.ProgressDialog;
 
 
 @SuppressLint("HandlerLeak")

@@ -1,15 +1,15 @@
 package com.micromap.core.map.model.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.database.sqlite.SQLiteDatabase;
 
+import com.micromap.core.map.model.RoadMark;
 import com.micromap.model.Position;
 import com.micromap.model.Road;
-import com.micromap.core.map.model.RoadMark;
 import com.micromap.model.dao.PositionDao;
 import com.micromap.model.dao.RoadDao;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RoadMarkDao {
     private SQLiteDatabase database;

@@ -1,16 +1,16 @@
 package com.micromap.model;
 
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 import android.util.Log;
 
 import com.micromap.R;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 
 public class DBManager {
     private String PACKAGE_NAME = "com.cuc.course";

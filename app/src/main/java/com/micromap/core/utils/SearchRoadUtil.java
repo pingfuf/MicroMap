@@ -1,16 +1,16 @@
 package com.micromap.core.utils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.micromap.model.Position;
-import com.micromap.model.dao.PositionDao;
-import com.micromap.model.Road;
-import com.micromap.model.dao.RoadDao;
 import com.micromap.core.map.model.RoadMark;
+import com.micromap.model.Position;
+import com.micromap.model.Road;
+import com.micromap.model.dao.PositionDao;
+import com.micromap.model.dao.RoadDao;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 道路查询的接口

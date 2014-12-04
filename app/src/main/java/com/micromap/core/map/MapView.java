@@ -1,8 +1,5 @@
 package com.micromap.core.map;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -12,19 +9,20 @@ import android.location.Location;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Display;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
 import android.view.View;
-import android.view.WindowManager;
 
+import com.micromap.MicroMapApplication.MapConfig;
 import com.micromap.core.animation.MyPlaceIconAnim;
 import com.micromap.core.map.cache.DrawTileCache;
 import com.micromap.core.map.overlay.Overlay;
-import com.micromap.MicroMapApplication.MapConfig;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * MapView is a widget extends view, which is in charge of the

@@ -1,12 +1,12 @@
 package com.micromap.core;
 
+import android.os.Environment;
+import android.util.Log;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-
-import android.os.Environment;
-import android.util.Log;
 
 public class FileManager {
 	public String RAM_PATH = "/data";

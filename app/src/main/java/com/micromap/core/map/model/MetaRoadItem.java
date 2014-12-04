@@ -1,8 +1,8 @@
 package com.micromap.core.map.model;
 
-import java.io.Serializable;
-
 import com.micromap.model.Position;
+
+import java.io.Serializable;
 
 /**
  * 道路上点的元数据，用来定义道路的基本信息

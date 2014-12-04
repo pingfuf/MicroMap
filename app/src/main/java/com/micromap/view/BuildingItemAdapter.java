@@ -1,10 +1,6 @@
 package com.micromap.view;
 
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.Map;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -25,6 +21,10 @@ import com.micromap.MapActivity;
 import com.micromap.PathFindingActivity;
 import com.micromap.R;
 import com.micromap.core.map.model.ItemMark;
+
+import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
 
 
 /**

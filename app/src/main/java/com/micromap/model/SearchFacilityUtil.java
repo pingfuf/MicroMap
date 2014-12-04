@@ -1,12 +1,12 @@
 package com.micromap.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.database.sqlite.SQLiteDatabase;
 
 import com.micromap.core.map.model.FacilityMark;
 import com.micromap.core.map.model.dao.FacilityMarkDao;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 部门查询API

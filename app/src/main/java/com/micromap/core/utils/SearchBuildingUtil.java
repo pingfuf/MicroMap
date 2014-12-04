@@ -1,15 +1,15 @@
 package com.micromap.core.utils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.database.sqlite.SQLiteDatabase;
 
-import com.micromap.model.Building;
 import com.micromap.core.map.model.BuildingMark;
 import com.micromap.core.map.model.dao.BuildingMarkDao;
-import com.micromap.model.dao.BuildingPositionDao;
+import com.micromap.model.Building;
 import com.micromap.model.Position;
+import com.micromap.model.dao.BuildingPositionDao;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /*

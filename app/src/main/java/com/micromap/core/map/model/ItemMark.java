@@ -2,8 +2,6 @@ package com.micromap.core.map.model;
 
 import java.io.Serializable;
 
-import com.micromap.core.map.model.BuildingMark;
-
 public class ItemMark implements Serializable {
     /**  **/
     private static final long serialVersionUID = 1L;

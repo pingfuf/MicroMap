@@ -1,11 +1,11 @@
 package com.micromap.http;
 
+import android.os.Environment;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
-import android.os.Environment;
 
 class FileUtils {
     private String PACKAGE_NAME = "com.cucmap";

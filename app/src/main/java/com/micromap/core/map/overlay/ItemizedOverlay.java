@@ -1,8 +1,5 @@
 package com.micromap.core.map.overlay;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -14,6 +11,9 @@ import com.micromap.MicroMapApplication;
 import com.micromap.core.map.GeoPoint;
 import com.micromap.core.map.MapView;
 import com.micromap.core.map.model.ItemMark;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**

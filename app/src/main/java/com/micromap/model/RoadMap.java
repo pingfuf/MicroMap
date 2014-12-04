@@ -1,12 +1,11 @@
 package com.micromap.model;
 
-import java.util.List;
-
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.micromap.model.Road;
 import com.micromap.model.dao.RoadDao;
+
+import java.util.List;
 
 public class RoadMap implements Runnable {
     private SQLiteDatabase database;
