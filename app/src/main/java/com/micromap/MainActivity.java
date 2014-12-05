@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.micromap.db.DBManager;
 import com.micromap.view.BaseActivity;
 
 
@@ -17,6 +18,12 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         gotoMapActivity();
+
+        //初始化数据库
+        DBManager dbManager = DBManager.getInstance();
+        dbManager.installLocalDatabase(this);
+
+        //初始化道路图
     }
 
 

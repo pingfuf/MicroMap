@@ -1,7 +1,6 @@
 package com.micromap.db;
 
-public class DBStateException extends RuntimeException
-{
+public class DBStateException extends RuntimeException{
 	/**
 	 * 
 	 */

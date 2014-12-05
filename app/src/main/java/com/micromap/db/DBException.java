@@ -1,7 +1,6 @@
 package com.micromap.db;
 
-public class DBException extends Exception
-{
+public class DBException extends Exception{
 	/**
 	 * 
 	 */

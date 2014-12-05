@@ -2,8 +2,7 @@ package com.micromap.db;
 
 import java.io.FileNotFoundException;
 
-public class DBFileNotFoundException extends FileNotFoundException
-{
+public class DBFileNotFoundException extends FileNotFoundException{
 	/**
 	 * 
 	 */

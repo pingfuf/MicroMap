@@ -39,7 +39,7 @@ public class DBManager {
 				if(! new File(this.DB_PATH).exists()){
 					new File(this.DB_PATH).mkdir();
 				}
-				InputStream is = context.getResources().openRawResource(R.raw.cucmap);
+				InputStream is = context.getResources().openRawResource(R.raw.micromap);
 				FileOutputStream out = new FileOutputStream(db_name);
 				byte buffer[] = new byte[BUFFER_SIZE];
 				int length = 0;
