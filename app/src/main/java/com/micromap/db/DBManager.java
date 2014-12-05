@@ -75,7 +75,7 @@ public class DBManager {
     }
 
     /**
-     *
+     * 得到本地数据库
      *
      * @return
      */
