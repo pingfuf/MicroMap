@@ -373,6 +373,35 @@ public class MapView extends View {
         scaleMap(factor);
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        // TODO Auto-generated method stub
+
+        if(event.getPointerCount() > 1){
+            scaleGestureDetector.onTouchEvent(event);
+        }else{
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    int touchX = (int) event.getRawX();
+                    int touchY = (int) event.getRawY();
+                    for(Map.Entry<Integer, Overlay> entry: overlayMap.entrySet()){
+                        Overlay o = entry.getValue();
+                        if(o.isShowingOverlay()){
+                            o.onClick(touchX, touchY);
+                        }
+                    }
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    break;
+                case MotionEvent.ACTION_UP:
+                    break;
+                default:break;
+            }
+            gestureDetector.onTouchEvent(event);
+        }
+        return true;
+    }
+
     /**
      *
      */

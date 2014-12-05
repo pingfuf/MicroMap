@@ -154,7 +154,7 @@ public class MapActivity extends BaseActivity {
                 mapControl.zoomIn();
             }
         });
-		
+
 		/* 缩小地图按钮  */
         zoomControls.setOnZoomOutClickListener(new OnClickListener() {
             @Override
@@ -205,21 +205,18 @@ public class MapActivity extends BaseActivity {
         zoomControls.setGravity(Gravity.CENTER);
     }
 
+    private void restoreMapState(){
+
+        mapView.invalidate();
+    }
+
     @Override
-    protected void onStart() {
+    protected void onResume() {
         // TODO Auto-generated method stub
 		/*
 		 * 添加监听
 		 */
-        super.onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        // TODO Auto-generated method stub
-        //mapView.postInvalidateDelayed(10000);
-
-        super.onStop();
+        super.onResume();
     }
 
     @Override
@@ -234,7 +231,7 @@ public class MapActivity extends BaseActivity {
 				 * 转到建筑搜索界面
 				 */
                 intent = new Intent(MapActivity.this, BuildingSearchActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 0);
                 Log.i("查找教室", "#####################");
                 break;
 
@@ -244,7 +241,7 @@ public class MapActivity extends BaseActivity {
 				 * 转到道路查询界面
 				 */
                 intent = new Intent(MapActivity.this, PathFindingActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 0);
                 break;
 
             case R.id.navigation_button:  //点击导航按钮
@@ -325,5 +322,7 @@ public class MapActivity extends BaseActivity {
                 break;
         }
     }
+
+
 
 }
