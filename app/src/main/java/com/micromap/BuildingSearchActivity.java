@@ -71,7 +71,7 @@ public class BuildingSearchActivity extends Activity {
 		}
 
 		SimpleAdapter simpleAdapter = new SimpleAdapter(this, categoryList,
-				R.layout.items, 
+				R.layout.building_search_category_item,
 				new String[] { "Image", "Text" }, 
 				new int[] {R.id.item_image, R.id.item_text });
 		
