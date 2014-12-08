@@ -12,8 +12,10 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ZoomControls;
 
@@ -39,7 +41,8 @@ public class MapActivity extends BaseActivity {
     /**
      * 地图上的控件
      */
-    private ImageButton searchContentBtn;
+    private LinearLayout topLayout;
+    private TextView searchContentTxt;
     private ImageButton pathFindBtn;
     private ImageButton myplaceBtn;
     private ZoomControls zoomControls;
@@ -51,10 +54,6 @@ public class MapActivity extends BaseActivity {
     private Location location;
 
     private Context context;
-
-    //窗口的大小
-    private int screenHeight;
-    private int screenWidth;
 
     //GPS提供模块
     private LocationProvider locationProvider;
@@ -74,7 +73,7 @@ public class MapActivity extends BaseActivity {
         getAllWidgets();
 		
 		/* 添加监听事件  */
-        searchContentBtn.setOnClickListener(this);
+        searchContentTxt.setOnClickListener(this);
         pathFindBtn.setOnClickListener(this);
         myplaceBtn.setOnClickListener(this);
 
@@ -169,37 +168,14 @@ public class MapActivity extends BaseActivity {
 		/*
 		 * 得到xml上的View
 		 */
-        LinearLayout.LayoutParams layoutParams;
-        int height = 0;
-        int width = 0;
-        searchContentBtn = (ImageButton) findViewById(R.id.search_button);
+        searchContentTxt = (TextView) findViewById(R.id.search_button);
         pathFindBtn = (ImageButton) findViewById(R.id.path_finding_button);
         myplaceBtn = (ImageButton) findViewById(R.id.myplace_button);
         zoomControls = (ZoomControls) findViewById(R.id.zoom);
         mapView = (MapView) findViewById(R.id.mapview);
+        topLayout = (LinearLayout) findViewById(R.id.mapview_top);
 
-        screenHeight = getWindowManager().getDefaultDisplay().getHeight();
-        screenWidth = getWindowManager().getDefaultDisplay().getWidth();
-		
-	    /* 改变SearchButton控件大小 */
-        width = screenWidth / 2;
-        height = screenHeight / 12;
-        layoutParams = new LinearLayout.LayoutParams(width, height);
-        layoutParams.setMargins(0, 0, 0, 0);
-        searchContentBtn.setLayoutParams(layoutParams);
-		
-		/* 改变PathFindButton控件大小 */
-        width = screenHeight / 12;
-        if (width < 48) {
-            width = 48;
-        }
-        height = width;
-        layoutParams = new LinearLayout.LayoutParams(width, height);
-        //layoutParams.setMargins(0, 0, 0, 0);
-        pathFindBtn.setLayoutParams(layoutParams);
-		
-		/* 改变MyPlaceButton控件的大小 */
-        myplaceBtn.setLayoutParams(layoutParams);
+        topLayout.setAlpha(60);
 		
 		/* 改变ZoomControl控件的大小 */
         zoomControls.setGravity(Gravity.CENTER);
@@ -244,42 +220,6 @@ public class MapActivity extends BaseActivity {
                 startActivityForResult(intent, 0);
                 break;
 
-            case R.id.navigation_button:  //点击导航按钮
-                Log.i("导航", "#############################");
-
-                //判断是否有道路
-                if (mapManager.positions.size() < 1) {
-                    Toast.makeText(context, "请选择道路", Toast.LENGTH_SHORT).show();
-                    break;
-                }
-
-                /** 打开导航动画  */
-                LocationManager lManager = (LocationManager)
-                        getSystemService(Context.LOCATION_SERVICE);
-                // 判断GPS是否正常启动
-                if (!lManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                    Toast.makeText(context, "请开启GPS导航...",
-                            Toast.LENGTH_SHORT).show();
-                    // 返回开启GPS导航设置界面
-                    intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                    startActivityForResult(intent, 0);
-                    break;
-                }
-                locationProvider = new LocationProvider(context, myPlaceIconAnim);
-                location = locationProvider.getMyLocation();
-                double longitude = location.getLongitude();
-                double latitude = location.getLatitude();
-                Position p1 = new Position(0, longitude, latitude, "");
-                if (!myPlaceIconAnim.isShowMyPlaceAnim()) {
-                    myPlaceIconAnim.showMyPlaceAnim();
-                }
-                int dis = SearchRoadUtil.getDistance(p1, mapManager.positions.get(0));
-                if (dis > 10) {
-                    String info = "dis = " + dis + ", 距离起始点太远，请选择新的路径";
-                    Toast.makeText(context, info, Toast.LENGTH_SHORT).show();
-                }
-                break;
-
             case R.id.myplace_button:     //点击移动到当前位置按钮
 
                 if (locationProvider == null) {
@@ -304,11 +244,7 @@ public class MapActivity extends BaseActivity {
                     double latitude1 = location.getLatitude();
                     Position position = new Position(0, longitude1, latitude1, "");
                     GeoPoint geoPoint = GeoPoint.getGeoPoint(position);
-                    int x = geoPoint.getMapX(mapView.getMapWidth());
-                    int y = geoPoint.getMapY(mapView.getMapHeight());
-                    int dx = (screenWidth / 2 - mapView.getMapOffsetX()) - x;
-                    int dy = (screenHeight / 2 - mapView.getMapOffsetY()) - y;
-                    mapControl.moveMap(dx, dy);
+                    mapControl.setCenter(geoPoint);
                 } else {
                     Toast toast = Toast.makeText(context, "不能获取GPS信息",
                             Toast.LENGTH_LONG);
@@ -323,6 +259,8 @@ public class MapActivity extends BaseActivity {
         }
     }
 
-
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }
