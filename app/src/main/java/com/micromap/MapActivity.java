@@ -1,18 +1,15 @@
 package com.micromap;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,10 +24,9 @@ import com.micromap.core.map.MapView;
 import com.micromap.core.map.model.ItemMark;
 import com.micromap.core.map.overlay.ItemizedOverlay;
 import com.micromap.core.map.overlay.OverlayItem;
-import com.micromap.core.map.overlay.OverlayItemUtls;
+import com.micromap.core.utils.OverlayItemUtls;
 import com.micromap.core.map.overlay.RouteOverlay;
 import com.micromap.model.Position;
-import com.micromap.model.SearchRoadUtil;
 import com.micromap.view.BaseActivity;
 
 import java.util.ArrayList;

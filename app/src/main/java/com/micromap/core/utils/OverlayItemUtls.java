@@ -1,4 +1,4 @@
-package com.micromap.core.map.overlay;
+package com.micromap.core.utils;
 
 import android.content.Context;
 
@@ -8,6 +8,8 @@ import com.micromap.core.map.model.BuildingMark;
 import com.micromap.core.map.model.FacilityMark;
 import com.micromap.core.map.model.ItemMark;
 import com.micromap.core.map.model.RoadMark;
+import com.micromap.core.map.overlay.OverlayItem;
+import com.micromap.core.map.overlay.OverlayItemConfig;
 import com.micromap.model.Position;
 import com.micromap.model.SearchRoadUtil;
 

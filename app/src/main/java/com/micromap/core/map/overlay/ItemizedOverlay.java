@@ -11,6 +11,7 @@ import com.micromap.MicroMapApplication;
 import com.micromap.core.map.GeoPoint;
 import com.micromap.core.map.MapView;
 import com.micromap.core.map.model.ItemMark;
+import com.micromap.core.utils.OverlayItemUtls;
 
 import java.util.ArrayList;
 import java.util.List;

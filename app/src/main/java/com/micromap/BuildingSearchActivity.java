@@ -2,6 +2,7 @@ package com.micromap;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -17,8 +18,14 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.micromap.core.map.model.FacilityMark;
+import com.micromap.core.map.model.dao.FacilityMarkDao;
+import com.micromap.core.map.overlay.OverlayItem;
+import com.micromap.db.DBManager;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BuildingSearchActivity extends Activity {
@@ -29,6 +36,7 @@ public class BuildingSearchActivity extends Activity {
 	private ArrayList<HashMap<String, Object>> categoryList = null;
 
 	private HashMap<String, Integer> itemImages;
+    private Map<String, Integer> category_type;
 	private EditText searchEdit;
 	private ImageButton imageButton;
 	private TextView text;
@@ -55,6 +63,20 @@ public class BuildingSearchActivity extends Activity {
 		itemImages.put("书店", R.drawable.bookshop);
 		itemImages.put("超市", R.drawable.market);
 
+        category_type = new HashMap<String, Integer>();
+
+        category_type.put("教室", 1);
+        category_type.put("学院", 2);
+        category_type.put("医院", 3);
+        category_type.put("宿舍", 4);
+        category_type.put("餐厅", 5);
+        category_type.put("学校", 6);
+        category_type.put("咖啡厅", 7);
+        category_type.put("图书馆", 8);
+        category_type.put("厕所", 9);
+        category_type.put("ATM机", 10);
+        category_type.put("书店", 11);
+        category_type.put("超市", 12);
 		/*
 		 * 获得XML中的控件
 		 */
@@ -112,32 +134,26 @@ public class BuildingSearchActivity extends Activity {
 			Log.i("temp-->","###############");
 			HashMap<String, Object> item = categoryList.get(arg2);
 			// 显示应用标题的那个TextView
+            String type = item.get("Text").toString();
+            SQLiteDatabase database = DBManager.getInstance().getDatabase();
+            int i = category_type.get(type);
+            FacilityMarkDao facilityMarkDao = new FacilityMarkDao(database);
+            List<FacilityMark> facilityMarks = facilityMarkDao.getFacilityMarkByType(i);
+            List<OverlayItem> overlayItems = O
 			searchEdit.setText((String) item.get("Text"));
 		}
 	}
 
 	private class MyOnClickListener implements OnClickListener {
-		private Map<String, Integer> category_type;
+
 
 		public MyOnClickListener() {
-			category_type = new HashMap<String, Integer>();
 
-			category_type.put("教室", 1);
-			category_type.put("学院", 2);
-			category_type.put("医院", 3);
-			category_type.put("宿舍", 4);
-			category_type.put("餐厅", 5);
-			category_type.put("学校", 6);
-			category_type.put("咖啡厅", 7);
-			category_type.put("图书馆", 8);
-			category_type.put("厕所", 9);
-			category_type.put("ATM机", 10);
-			category_type.put("书店", 11);
-			category_type.put("超市", 12);
 		}
 
 		/**
 		 * 根据搜索内容判定是否是按类型搜索
+         *
 		 * @param categoryString 分类的名称
 		 * @return i 分类的编号，如果为0，表示没有该分类
 		 */
