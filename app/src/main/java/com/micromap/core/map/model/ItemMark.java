@@ -1,36 +1,30 @@
 package com.micromap.core.map.model;
 
+import com.micromap.model.Position;
+
 import java.io.Serializable;
 
 public class ItemMark implements Serializable {
     /**  **/
     private static final long serialVersionUID = 1L;
-    private BuildingMark buildingMark;
     private String name;
-    private String description;
     private int type;
+    private String description;
+    private Position position;
     private boolean isChosen = false; // 给Item是否被选择,如果被选择，则在地图上显示地图信息
 
     public ItemMark() {
-    };
+    }
 
-    public ItemMark(BuildingMark buildingMark, String name, String description, int type) {
-        this.buildingMark = buildingMark;
+    public ItemMark(String name, String description, int type, Position position) {
         this.name = name;
         this.description = description;
         this.type = type;
-    }
-
-    public BuildingMark getBuildingMark() {
-        return buildingMark;
+        this.position = position;
     }
 
     public int getType() {
         return type;
-    }
-
-    public void setBuildingMark(BuildingMark buildingMark) {
-        this.buildingMark = buildingMark;
     }
 
     public void setType(int type) {
@@ -59,5 +53,17 @@ public class ItemMark implements Serializable {
 
     public boolean isChosen() {
         return this.isChosen;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public void setChosen(boolean isChosen) {
+        this.isChosen = isChosen;
     }
 }

@@ -26,7 +26,7 @@ public class FacilityDao extends TBManager {
     public static final String BUILDING_ID = "building_id";
     public static final String NAME = "facility_name";
     public static final String TYPE = "facility_type";
-    public static final String DESCRIPTION = "description";
+    public static final String DESCRIPTION = "facility_description";
 
     private SQLiteDatabase database;
 

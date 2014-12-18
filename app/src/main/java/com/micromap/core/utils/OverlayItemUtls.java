@@ -150,8 +150,7 @@ public class OverlayItemUtls {
     	List<OverlayItem> items = new ArrayList<OverlayItem>();
     	Context context = mapView.getContext();
     	for(ItemMark itemMark:itemMarks){
-    		BuildingMark buildingMark = itemMark.getBuildingMark();
-    		GeoPoint point = GeoPoint.getGeoPoint(buildingMark.getPosition());
+    		GeoPoint point = GeoPoint.getGeoPoint(itemMark.getPosition());
     		String description = itemMark.getDescription();
     		String title = itemMark.getName();
     		int item_type = 0;

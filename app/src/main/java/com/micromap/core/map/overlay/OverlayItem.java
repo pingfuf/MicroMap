@@ -165,7 +165,6 @@ public class OverlayItem implements Serializable {
      * @param x
      * @param y
      * @param mapView 一个mapView对象
-     * @param itemMark
      */
     public void onClick(int x, int y, MapView mapView, OverlayItem item) {
         //如果当前的Item是可点击的
