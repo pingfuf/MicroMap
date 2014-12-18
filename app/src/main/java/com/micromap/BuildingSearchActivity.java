@@ -47,6 +47,8 @@ public class BuildingSearchActivity extends BaseActivity {
     private MicroMapApplication application;
     private Context mContext;
 
+    private String TAG = "SearchBuilding";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -146,6 +148,7 @@ public class BuildingSearchActivity extends BaseActivity {
 
             //存储查询结果
             application.itemMarks = itemMarks;
+            Log.e(TAG, "itemMarks" + itemMarks.size());
 
             goToMapActivity();
         }
