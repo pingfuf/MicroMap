@@ -7,7 +7,7 @@ import android.graphics.BitmapFactory;
 import com.micromap.R;
 
 
-class OverlayItemConfig {
+public class OverlayItemConfig {
 	/** OverlayItem属于建筑 */
     public static int BUILDING_ITEM_TYPE = 0;
     

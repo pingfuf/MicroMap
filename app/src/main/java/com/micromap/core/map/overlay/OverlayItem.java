@@ -12,13 +12,15 @@ import com.micromap.core.map.GeoPoint;
 import com.micromap.core.map.MapView;
 import com.micromap.core.map.model.ItemMark;
 
+import java.io.Serializable;
+
 /**
  * ItemizedOverlayOverlay图层上的最小数据单元
  * 建筑的标记、部门的标记、道路上的标记均由此生成
  *
  * @author Pingfu
  */
-public class OverlayItem {
+public class OverlayItem implements Serializable {
     private GeoPoint point;       //坐标点
     private String description;   //Item的提示信息
     private String title;         //Item的名称
@@ -68,6 +70,13 @@ public class OverlayItem {
         this.item_type = item_type;
     }
 
+    public String getTitle(){
+        return title;
+    }
+
+    public String getDescription(){
+        return description;
+    }
     /**
      * 根据Mark的编号设置Mark
      *
@@ -158,7 +167,7 @@ public class OverlayItem {
      * @param mapView 一个mapView对象
      * @param itemMark
      */
-    public void onClick(int x, int y, MapView mapView, ItemMark itemMark) {
+    public void onClick(int x, int y, MapView mapView, OverlayItem item) {
         //如果当前的Item是可点击的
         if (isClickable) {
             int mapWidth = mapView.getMapWidth();
@@ -177,12 +186,12 @@ public class OverlayItem {
             if (Math.abs((x - mapX)) < 40 && Math.abs(y - (mapY + 30)) < 40) {
                 if (item_type == OverlayItemConfig.BUILDING_ITEM_TYPE) {
                     ItemPopupWindow popupWindow = new ItemPopupWindow(context,
-                            itemMark, title);
+                            item, title);
 
                     popupWindow.showItemPopupWindow(mapView, mapX, mapY);
                 } else {
                     ItemPopupWindow popupWindow = new ItemPopupWindow(context,
-                            itemMark, title);
+                            item, title);
                     popupWindow.showNavPopupWindow(mapView, mapX, mapY);
                 }
             }

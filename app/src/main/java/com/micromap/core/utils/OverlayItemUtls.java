@@ -18,19 +18,14 @@ import java.util.List;
 
 
 public class OverlayItemUtls {
-    private MapView mapView;
-    
-    public OverlayItemUtls(MapView mapView){
-    	this.mapView = mapView;
-    }
-	
-	/*
+	/**
 	 * 根据道路生成Items对象，模仿Baidu样式
+     *
 	 * @param roadMarks 道路的集合
-	 * @return items    返回道路上的标志点列表（有问题）
+	 * @param mapView
+     * @return items    返回道路上的标志点列表（有问题）
 	 */
-    public List<OverlayItem> getItemsByRoadMarks(
-    		List<RoadMark> roadMarks){
+    public static List<OverlayItem> getItemsByRoadMarks(List<RoadMark> roadMarks, MapView mapView){
     	List<OverlayItem> items = new ArrayList<OverlayItem>();
  
     	int mapHeight = mapView.getMapHeight();
@@ -84,12 +79,12 @@ public class OverlayItemUtls {
     	return items;
     }
     
-    /*
+    /**
 	 * 根据最短路径生成Items对象，模仿Baidu样式
 	 * @param  path    使用最短路径算法获取的信息
 	 * @return items   返回道路上的标志列表
 	 */
-    public List<OverlayItem> getItemsByPath(List<Position> path){
+    public static List<OverlayItem> getItemsByPath(List<Position> path, MapView mapView){
     	List<OverlayItem> items = new ArrayList<OverlayItem>();
     	int size = path.size();
     	int mapWidth = mapView.getMapWidth();
@@ -148,9 +143,10 @@ public class OverlayItemUtls {
     /**
      * 根据Itemmarks生成Overlay的Mark类型
      * @param itemMarks
+     * @param mapView   当前的地图View
      * @return
      */
-    public List<OverlayItem> getItemsByItemMarks(List<ItemMark> itemMarks){
+    public static List<OverlayItem> getItemsByItemMarks(List<ItemMark> itemMarks, MapView mapView){
     	List<OverlayItem> items = new ArrayList<OverlayItem>();
     	Context context = mapView.getContext();
     	for(ItemMark itemMark:itemMarks){
@@ -168,10 +164,11 @@ public class OverlayItemUtls {
     
     /**
      * 根据BuildingMarks生成图层上的标志列表
+     *
      * @param buildingMarks   建筑的列表
      * @return 生成的图层上的标志列表
      */
-    public List<OverlayItem> getItemsByBuildingMarks(List<BuildingMark> buildingMarks){
+    public static List<OverlayItem> getItemsByBuildingMarks(List<BuildingMark> buildingMarks, MapView mapView){
         List<OverlayItem> items = new ArrayList<OverlayItem>();
         Context context = mapView.getContext();
         for(BuildingMark buildingMark: buildingMarks){
@@ -188,10 +185,11 @@ public class OverlayItemUtls {
     
     /**
      * 根据FacilityMarks生成图层上的标志列表
+     *
      * @param facilityMarks   部门的列表
      * @return 生成的图层上的标志列表
      */
-    public List<OverlayItem> getItemsByFacilityMarks(List<FacilityMark> facilityMarks){
+    public static List<OverlayItem> getItemsByFacilityMarks(List<FacilityMark> facilityMarks, MapView mapView){
         List<OverlayItem> items = new ArrayList<OverlayItem>();
         Context context = mapView.getContext();
         for(FacilityMark facilityMark: facilityMarks){

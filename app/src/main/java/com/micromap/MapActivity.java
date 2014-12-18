@@ -56,6 +56,8 @@ public class MapActivity extends BaseActivity {
     //导航模块
     private MyPlaceIconAnim myPlaceIconAnim;
 
+    public static final int ACTIVITY_RESULT_CODE = 20;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +69,7 @@ public class MapActivity extends BaseActivity {
 
 		/* 得到XML上的所有控件  */
         getAllWidgets();
-		
+
 		/* 添加监听事件  */
         searchContentTxt.setOnClickListener(this);
         pathFindBtn.setOnClickListener(this);
@@ -76,70 +78,11 @@ public class MapActivity extends BaseActivity {
         zoomControls.setIsZoomInEnabled(true);
         zoomControls.setIsZoomOutEnabled(true);
 
-        OverlayItemUtls itemUtls = new OverlayItemUtls(mapView);
-
         mapControl = mapView.getMapControl();
-
-        /** 画出MapManager全局变量中的功能图层 */
-        if (mapManager.getMapState() == MicroMapApplication.WORKING_STATE) {
-            /** 恢复之前的MapView状态 */
-
-            /** 如果有建筑搜索结果，显示建筑图层 */
-            Bundle bundle = this.getIntent().getExtras();
-            if (mapManager.itemMarks.size() > 0) {
-                List<ItemMark> items = new ArrayList<ItemMark>();
-                for (int i = 0; i < mapManager.itemMarks.size(); i++) {
-                    items.add(mapManager.itemMarks.get(i));
-                }
-
-                //将查询的建筑居中
-                String building_name = "";
-                if (bundle != null) {
-                    building_name = (String) bundle.get("building_name");
-                }
-                if (building_name.length() > 0) {
-                    for (int i = 0; i < items.size(); i++) {
-                        ItemMark item = items.get(i);
-                        if (item.getName().equals(building_name)) {
-                            //
-                            if (i != 0) {
-                                ItemMark temp = items.get(0);
-                                items.set(0, item);
-                                items.set(i, temp);
-                            }
-                            break;
-                        }
-                    }
-                }
-                ItemMark temp = items.get(0);
-                Log.i("Items-->", "" + items.size() + " ###");
-                GeoPoint point = GeoPoint.getGeoPoint(
-                        temp.getBuildingMark().getPosition());
-                mapControl.setCenter(point);
-                Log.i("ItemlizedOverlay", "显示建筑信息");
-                ItemizedOverlay overlay = new ItemizedOverlay(mapView);
-                overlay.setItemMarks(items);
-                overlay.setzIndex(MicroMapApplication.MapConfig.ITEM_OVERLAY_Z_INDEX);
-                overlay.displayOverlay();
-                mapControl.addOverlayer(overlay);
-            }
-
-            /** 如果有道路查询结果，显示道路查询图层  */
-            if (mapManager.positions.size() > 0) {
-                RouteOverlay overlay = new RouteOverlay(mapView);
-                List<OverlayItem> items = itemUtls.getItemsByPath(mapManager.positions);
-                //overlay.setRoadMarks(mapManager.searchedRoadMarks);
-                overlay.setItems(items);
-                overlay.displayOverlay();
-                overlay.setzIndex(MicroMapApplication.MapConfig.ROUTE_OVERLAY_Z_INDEX);
-                mapControl.addOverlayer(overlay);
-            }
-        }
 
         /** 打开导航模块  */
         myPlaceIconAnim = mapView.getMyPlaceIconAnim();
-		
-		
+
 		/* 放大地图按钮  */
         zoomControls.setOnZoomInClickListener(new OnClickListener() {
 
@@ -170,14 +113,12 @@ public class MapActivity extends BaseActivity {
         zoomControls = (ZoomControls) findViewById(R.id.zoom);
         mapView = (MapView) findViewById(R.id.mapview);
         topLayout = (LinearLayout) findViewById(R.id.mapview_top);
-
-        topLayout.setAlpha(60);
 		
 		/* 改变ZoomControl控件的大小 */
         zoomControls.setGravity(Gravity.CENTER);
     }
 
-    private void restoreMapState(){
+    private void restoreMapState() {
 
         mapView.invalidate();
     }
@@ -258,5 +199,25 @@ public class MapActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        addItemOverlay();
+        addRootOverlay();
+        if (resultCode == ACTIVITY_RESULT_CODE) {
+            mapView.invalidate();
+        }
+    }
+
+    private void addItemOverlay() {
+        if (mapManager.itemMarks == null || mapManager.itemMarks.size() == 0) {
+            return;
+        }
+        List<OverlayItem> items = OverlayItemUtls.getItemsByItemMarks(mapManager.itemMarks, mapView);
+        ItemizedOverlay overlay = new ItemizedOverlay(mapView, items);
+        mapControl.addOverlayer(overlay);
+    }
+
+    private void addRootOverlay(){
+        if(mapManager.positions == null || mapManager.positions.size() == 0){
+            return;
+        }
     }
 }

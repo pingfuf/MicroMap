@@ -22,8 +22,6 @@ import java.util.List;
  */
 @SuppressLint("HandlerLeak")
 public class ItemizedOverlay extends Overlay {
-
-    private List<ItemMark> itemMarks;
     private List<OverlayItem> items;
     private Handler handler;
     private int index = 0;
@@ -36,13 +34,9 @@ public class ItemizedOverlay extends Overlay {
         showPopUpWindow();
     }
 
-    
-    public List<ItemMark> getItemMarks() {
-        return itemMarks;
-    }
-
-    public void setItemMarks(List<ItemMark> itemMarks) {
-        this.itemMarks = itemMarks;
+    public ItemizedOverlay(MapView mapView, List<OverlayItem> overlayItems){
+        super(mapView);
+        items = overlayItems;
     }
 
     /**
@@ -55,7 +49,6 @@ public class ItemizedOverlay extends Overlay {
         if (!this.isShowingOverlay()) {
             return;
         }
-        items = new OverlayItemUtls(getMapView()).getItemsByItemMarks(itemMarks);
         int mapOffsetX = getMapView().getMapOffsetX();
         int mapOffsetY = getMapView().getMapOffsetY();
 
@@ -88,11 +81,11 @@ public class ItemizedOverlay extends Overlay {
     @Override
     public void onClick(int x, int y) {
         // TODO Auto-generated method stub
-        for (int i = 0; i < itemMarks.size();i ++){
-            ItemMark mark = itemMarks.get(i);
-            GeoPoint point = GeoPoint.getGeoPoint(mark.getBuildingMark().getPosition());
-            String description = mark.getDescription();
-            String title = mark.getName();
+        for (int i = 0; i < items.size();i ++){
+            OverlayItem mark = items.get(i);
+            GeoPoint point = GeoPoint.getGeoPoint(mark.getPoint().getPosition());
+            String description = mark.getTitle();
+            String title = mark.getTitle();
             int item_type = 0;
             OverlayItem item = items.get(i);
             Context context = getMapView().getContext();
@@ -114,9 +107,8 @@ public class ItemizedOverlay extends Overlay {
                         finishShowMark = true;
                         index = 0;
                     }else{
-                        ItemMark item = itemMarks.get(0);
-                        GeoPoint point = GeoPoint.getGeoPoint(item.getBuildingMark()
-                                .getPosition());
+                        OverlayItem item = items.get(0);
+                        GeoPoint point = item.getPoint();
                         int deepZoom = getMapView().getDeepZoom();
                         int mapOffsetX = getMapView().getMapOffsetX();
                         int mapOffsetY = getMapView().getMapOffsetY();
@@ -130,7 +122,7 @@ public class ItemizedOverlay extends Overlay {
                         int x = (mapX + mapOffsetX);
                         int y = (mapY + mapOffsetY);
                         Log.i("handle-->",Integer.toString(x));
-                        String text = item.getName();
+                        String text = item.getTitle();
                         Context context = getMapView().getContext();
                         ItemPopupWindow popupWindow = new ItemPopupWindow(context,item,text);
                         popupWindow.showItemPopupWindow(getMapView(), x, y);
