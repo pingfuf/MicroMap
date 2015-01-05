@@ -21,9 +21,10 @@ public class ItemMarkDao {
 		List<ItemMark> marks = new ArrayList<ItemMark>();
 		for(int i = 0; i < buildingMarks.size(); i++){
 			BuildingMark buildingMark = buildingMarks.get(i);
+            int id = buildingMark.getBuilding().getId();
 			String name = buildingMark.getBuilding().getName();
 			String description = buildingMark.getBuilding().getDescription();
-			ItemMark mark = new ItemMark(name, description, BUILDING_DATA_TYPE, buildingMark.getPosition());
+			ItemMark mark = new ItemMark(id, name, description, BUILDING_DATA_TYPE, buildingMark.getPosition());
 			marks.add(mark);
 		}
 		return marks;
@@ -40,10 +41,11 @@ public class ItemMarkDao {
 		for(int i = 0; i < facilityMarks.size(); i++){
 			FacilityMark facilityMark = facilityMarks.get(i);
 			BuildingMark buildingMark = facilityMark.getBuildingMark();
+            int id = buildingMark.getBuilding().getId();
 			String name = facilityMark.getFacility().getName();
 			String description = facilityMark.getFacility().getDescription();
 			int type = FACILITY_DATA_TYPE;
-			ItemMark mark = new ItemMark(name, description, type, buildingMark.getPosition());
+			ItemMark mark = new ItemMark(id, name, description, type, buildingMark.getPosition());
 			marks.add(mark);
 		}
 		return marks;

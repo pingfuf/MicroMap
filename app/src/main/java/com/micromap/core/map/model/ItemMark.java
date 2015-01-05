@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class ItemMark implements Serializable {
     /**  **/
     private static final long serialVersionUID = 1L;
+    private int id;
     private String name;
     private int type;
     private String description;
@@ -17,11 +18,20 @@ public class ItemMark implements Serializable {
     public ItemMark() {
     }
 
-    public ItemMark(String name, String description, int type, Position position) {
+    public ItemMark(int id, String name, String description, int type, Position position) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.type = type;
         this.position = position;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getType() {
@@ -70,6 +80,11 @@ public class ItemMark implements Serializable {
 
     public Building getBuilding(){
         Building building = new Building();
+        building.setId(id);
+        building.setName(name);
+        building.setDescription(description);
+        building.setAlias("");
+        building.setNumber(0);
         return building;
     }
 }
