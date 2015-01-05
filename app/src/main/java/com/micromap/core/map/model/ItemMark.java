@@ -1,5 +1,6 @@
 package com.micromap.core.map.model;
 
+import com.micromap.model.Building;
 import com.micromap.model.Position;
 
 import java.io.Serializable;
@@ -65,5 +66,10 @@ public class ItemMark implements Serializable {
 
     public void setChosen(boolean isChosen) {
         this.isChosen = isChosen;
+    }
+
+    public Building getBuilding(){
+        Building building = new Building();
+        return building;
     }
 }
