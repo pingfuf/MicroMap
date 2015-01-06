@@ -272,14 +272,14 @@ public class MapView extends View {
 
         if (mapOffsetX > screenWidth / 2) {
             mapOffsetX = screenWidth / 2;
-        } else if (mapOffsetX < -mapWidth/2) {
-            mapOffsetX = -mapWidth/2;
+        } else if (mapOffsetX < mapWidth/2 - mapWidth) {
+            mapOffsetX = mapWidth/2 - mapWidth;
         }
 
         if (mapOffsetY > screenHeight / 2) {
             mapOffsetY = screenHeight / 2;
-        } else if (mapOffsetY < -mapHeight/2) {
-            mapOffsetY = -mapHeight/2;
+        } else if (mapOffsetY < mapHeight/2 - mapHeight) {
+            mapOffsetY = mapHeight/2 - mapHeight;
         }
         mPlaceAnimation.moveAnim(dx, dy);
         postInvalidate();
