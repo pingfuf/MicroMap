@@ -212,6 +212,7 @@ public class MapActivity extends BaseActivity {
         }
         List<OverlayItem> items = OverlayItemUtls.getItemsByItemMarks(mapManager.itemMarks, mapView);
         ItemizedOverlay overlay = new ItemizedOverlay(mapView, items);
+        overlay.displayOverlay();
         mapControl.addOverlayer(overlay);
     }
 

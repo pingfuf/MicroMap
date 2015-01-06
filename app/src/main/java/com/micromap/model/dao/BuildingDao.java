@@ -100,8 +100,8 @@ public class BuildingDao extends TBManager {
      */
     public List<Building> getBuildingByName(String name) {
         List<Building> buildings = new ArrayList<Building>();
-        Cursor cursor = database.query("building", null, "building_name like ?", new String[] { "%" + name + "%" },
-                null, null, null);
+        Cursor cursor = database.query(TABLE_NAME, null, "building_name like ?",
+                new String[] { "%" + name + "%" }, null, null, null);
 
         // 游标回到初始位置
         if (cursor.moveToFirst()) {
@@ -166,7 +166,8 @@ public class BuildingDao extends TBManager {
      * @return building 一个Building对象
      */
     public Building getBuildingById(int id) {
-        Cursor cursor = database.query(TABLE_NAME, null, null, null, null, null, null);
+        Cursor cursor = database.query(TABLE_NAME, null, "building_id = ?",
+                new String[]{"" + id}, null, null, null);
         Building building = null;
         if (cursor.moveToFirst()) {
             do {

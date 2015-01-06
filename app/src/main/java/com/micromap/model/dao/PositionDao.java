@@ -87,12 +87,13 @@ public class PositionDao extends TBManager {
 
     /**
      * 根据Position的id查找兴趣点
-     * 
+     *
      * @param id Position的坐标点id
      * @return position 返回一个Position对象
      */
     public Position getPositionById(int id) {
-        Cursor cursor = database.query(TABLE_NAME, null, "position_id = ?", new String[] { "" + id }, null, null, null);
+        Cursor cursor = database.query(TABLE_NAME, null, "pos_id = ?",
+                new String[]{"" + id}, null, null, null);
         Position position = null;
         if (cursor.moveToFirst()) {
             do {
@@ -112,7 +113,7 @@ public class PositionDao extends TBManager {
 
     /**
      * 根据XML数据更新表
-     * 
+     *
      * @param in XML文件输入流
      */
     public void parserXml(InputStream in) {
@@ -128,47 +129,47 @@ public class PositionDao extends TBManager {
             while (evtType != XmlPullParser.END_DOCUMENT) {
                 switch (evtType) {
 
-                case XmlPullParser.START_TAG: // 标签开始
+                    case XmlPullParser.START_TAG: // 标签开始
 
-                    String tag = xmlParser.getName();
-                    if (tag.equals("PositionOfinterest")) {
-                        // 如果是user标签开始，则说明需要实例化对象了
-                        position = new Position();
-                    }
-
-                    if (tag.equalsIgnoreCase(ID)) {
-                        // 取出User标签中的一些属性值
-                        String id = xmlParser.nextText();
-                        position.setId(Integer.parseInt(id));
-                    }
-
-                    if (tag.equalsIgnoreCase(NAME)) {
-                        String name = xmlParser.nextText();
-                        position.setName(name);
-                    }
-
-                    if (tag.equalsIgnoreCase(LON)) {
-                        String longitude = xmlParser.nextText();
-                        position.setLongitude(Double.parseDouble(longitude));
-                    }
-
-                    if (tag.equalsIgnoreCase(LAT)) {
-                        String latitude = xmlParser.nextText();
-                        position.setLatitude(Double.parseDouble(latitude));
-                    }
-
-                    break;
-
-                case XmlPullParser.END_TAG:
-                    // 如果遇到river标签结束，则把river对象添加进集合中
-                    if (xmlParser.getName().equals("PositionOfinterest")) {
-                        if (position != null) {
-                            insertElem(position);
+                        String tag = xmlParser.getName();
+                        if (tag.equals("PositionOfinterest")) {
+                            // 如果是user标签开始，则说明需要实例化对象了
+                            position = new Position();
                         }
-                    }
-                    break;
-                default:
-                    break;
+
+                        if (tag.equalsIgnoreCase(ID)) {
+                            // 取出User标签中的一些属性值
+                            String id = xmlParser.nextText();
+                            position.setId(Integer.parseInt(id));
+                        }
+
+                        if (tag.equalsIgnoreCase(NAME)) {
+                            String name = xmlParser.nextText();
+                            position.setName(name);
+                        }
+
+                        if (tag.equalsIgnoreCase(LON)) {
+                            String longitude = xmlParser.nextText();
+                            position.setLongitude(Double.parseDouble(longitude));
+                        }
+
+                        if (tag.equalsIgnoreCase(LAT)) {
+                            String latitude = xmlParser.nextText();
+                            position.setLatitude(Double.parseDouble(latitude));
+                        }
+
+                        break;
+
+                    case XmlPullParser.END_TAG:
+                        // 如果遇到river标签结束，则把river对象添加进集合中
+                        if (xmlParser.getName().equals("PositionOfinterest")) {
+                            if (position != null) {
+                                insertElem(position);
+                            }
+                        }
+                        break;
+                    default:
+                        break;
                 }
                 evtType = xmlParser.next();
             }

@@ -163,6 +163,7 @@ public class MapView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         // TODO Auto-generated method stub
+        Log.e("MapView -- >", "ddddd");
         int mTileSize = (int) (MapConfig.TILE_SIZE * mScale);
         int m = screenHeight / MapConfig.TILE_SIZE + 2;
         int n = screenWidth / MapConfig.TILE_SIZE + 2;

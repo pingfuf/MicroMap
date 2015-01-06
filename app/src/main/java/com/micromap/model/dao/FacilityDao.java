@@ -90,7 +90,8 @@ public class FacilityDao extends TBManager {
      */
     public Facility getFacilityById(int id) {
         Facility facility = null;
-        Cursor cursor = database.query("facility", null, "facility_id = ?", new String[] { "" + id }, null, null, null);
+        Cursor cursor = database.query("facility", null, "facility_id = ?",
+                new String[]{"" + id}, null, null, null);
         if (cursor.moveToFirst()) {
             do {
                 int f_id = cursor.getInt(cursor.getColumnIndex(ID));
@@ -116,7 +117,7 @@ public class FacilityDao extends TBManager {
      */
     public List<Facility> getFacilityByName(String name) {
         List<Facility> facilities = new ArrayList<Facility>();
-        Cursor cursor = database.query(TABLE_NAME, null, "facility_name like ?", new String[] { "%" + name + "%" },
+        Cursor cursor = database.query(TABLE_NAME, null, "facility_name like ?", new String[]{"%" + name + "%"},
                 null, null, null);
         if (cursor.moveToFirst()) {
             do {
@@ -139,13 +140,13 @@ public class FacilityDao extends TBManager {
 
     /**
      * 根据Facility的类型查找
-     * 
+     *
      * @param type 要查找的Facility的类型
      * @return 一组Facility对象
      */
     public List<Facility> getFacilityByType(int type) {
         List<Facility> facilities = new ArrayList<Facility>();
-        Cursor cursor = database.query("facility", null, "facility_type = ?", new String[] { "" + type }, null, null,
+        Cursor cursor = database.query("facility", null, "facility_type = ?", new String[]{"" + type}, null, null,
                 null);
         if (cursor.moveToFirst()) {
             do {
@@ -168,7 +169,7 @@ public class FacilityDao extends TBManager {
 
     /**
      * 根据XML数据更新表
-     * 
+     *
      * @param in XML文件输入流
      */
     public void parserXml(InputStream in) {
@@ -184,48 +185,48 @@ public class FacilityDao extends TBManager {
             while (evtType != XmlPullParser.END_DOCUMENT) {
                 switch (evtType) {
 
-                case XmlPullParser.START_TAG: // 标签开始
+                    case XmlPullParser.START_TAG: // 标签开始
 
-                    String tag = xmlParser.getName();
-                    if (tag.equals(TABLE_NAME)) {
-                        // 如果是user标签开始，则说明需要实例化对象了
-                        facility = new Facility();
-                    }
-                    if (tag.equalsIgnoreCase(ID)) {
-                        // 取出User标签中的一些属性值
-                        String id = xmlParser.nextText();
-                        facility.setId(Integer.parseInt(id));
-                    }
-                    if (tag.equalsIgnoreCase(BUILDING_ID)) {
-                        // 取出User标签中的一些属性值
-                        String b_id = xmlParser.nextText();
-                        facility.setBuildingId(Integer.parseInt(b_id));
-                    }
-                    if (tag.equalsIgnoreCase(NAME)) {
-                        String name = xmlParser.nextText();
-                        facility.setName(name);
-                    }
-                    if (tag.equalsIgnoreCase(TYPE)) {
-                        String type = xmlParser.nextText();
-                        facility.setType(Integer.parseInt(type));
-                    }
-                    if (tag.equalsIgnoreCase(DESCRIPTION)) {
-                        // 取出User标签中的一些属性值
-                        String desc = xmlParser.nextText();
-                        facility.setDescription(desc);
-                    }
-                    break;
-
-                case XmlPullParser.END_TAG:
-                    // 如果遇到river标签结束，则把river对象添加进集合中
-                    if (xmlParser.getName().equals(TABLE_NAME)) {
-                        if (facility != null) {
-                            insertElem(facility);
+                        String tag = xmlParser.getName();
+                        if (tag.equals(TABLE_NAME)) {
+                            // 如果是user标签开始，则说明需要实例化对象了
+                            facility = new Facility();
                         }
-                    }
-                    break;
-                default:
-                    break;
+                        if (tag.equalsIgnoreCase(ID)) {
+                            // 取出User标签中的一些属性值
+                            String id = xmlParser.nextText();
+                            facility.setId(Integer.parseInt(id));
+                        }
+                        if (tag.equalsIgnoreCase(BUILDING_ID)) {
+                            // 取出User标签中的一些属性值
+                            String b_id = xmlParser.nextText();
+                            facility.setBuildingId(Integer.parseInt(b_id));
+                        }
+                        if (tag.equalsIgnoreCase(NAME)) {
+                            String name = xmlParser.nextText();
+                            facility.setName(name);
+                        }
+                        if (tag.equalsIgnoreCase(TYPE)) {
+                            String type = xmlParser.nextText();
+                            facility.setType(Integer.parseInt(type));
+                        }
+                        if (tag.equalsIgnoreCase(DESCRIPTION)) {
+                            // 取出User标签中的一些属性值
+                            String desc = xmlParser.nextText();
+                            facility.setDescription(desc);
+                        }
+                        break;
+
+                    case XmlPullParser.END_TAG:
+                        // 如果遇到river标签结束，则把river对象添加进集合中
+                        if (xmlParser.getName().equals(TABLE_NAME)) {
+                            if (facility != null) {
+                                insertElem(facility);
+                            }
+                        }
+                        break;
+                    default:
+                        break;
                 }
                 evtType = xmlParser.next();
             }
