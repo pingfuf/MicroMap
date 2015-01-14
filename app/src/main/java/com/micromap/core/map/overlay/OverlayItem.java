@@ -77,6 +77,7 @@ public class OverlayItem implements Serializable {
     public String getDescription(){
         return description;
     }
+
     /**
      * 根据Mark的编号设置Mark
      *
