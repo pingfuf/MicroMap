@@ -104,7 +104,7 @@ public class ItemPopupWindow {
         public void onClick(View v) {
             // TODO Auto-generated method stub
             if(v.getId() == R.id.building_pop_path){
-                intent = new Intent(context,PathFindingActivity.class);
+                intent = new Intent(context, PathFindingActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 if(item != null){
                     Bundle bundle = new Bundle();

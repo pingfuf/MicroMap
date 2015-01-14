@@ -75,7 +75,6 @@ public class ItemizedOverlay extends Overlay {
         }
         if(!finishShowMark && handler != null){
             handler.obtainMessage(0).sendToTarget();
-            Log.e("ItemizedOverlay -- >", "dddddd");
         }
     }
 
